@@ -1,5 +1,5 @@
-
 import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_state_button/iconed_button.dart';
@@ -8,6 +8,28 @@ import 'package:progress_state_button/progress_button.dart';
 class ProgressButtonWg extends StatefulWidget {
   @override
   _ProgressButtonWgState createState() => _ProgressButtonWgState();
+
+  String? mainText;
+  String? failedText;
+  String? successText;
+  Color? buttonMainColor;
+  Color? buttonFailedColor;
+  Color? buttonSuccesColor;
+  Color? buttonLoadingColor;
+  Widget? sendIcon;
+  var onPressed;
+
+  ProgressButtonWg({
+    this.mainText,
+    this.failedText,
+    this.successText,
+    this.buttonMainColor,
+    this.buttonFailedColor,
+    this.buttonSuccesColor,
+    this.buttonLoadingColor,
+    this.sendIcon,
+    this.onPressed
+  });
 }
 
 class _ProgressButtonWgState extends State<ProgressButtonWg> {
@@ -18,22 +40,23 @@ class _ProgressButtonWgState extends State<ProgressButtonWg> {
   Widget build(BuildContext context) {
     return ProgressButton.icon(iconedButtons: {
       ButtonState.idle: IconedButton(
-          text: 'Send',
-          icon: Icon(Icons.send, color: Colors.white),
-          color: Colors.deepPurple.shade500),
-      ButtonState.loading:
-      IconedButton(text: 'Loading', color: Colors.deepPurple.shade700),
+          text: widget.mainText ?? 'Send',
+          icon:  Icon(Icons.send, color: Colors.white),
+          color: widget.buttonMainColor ?? Colors.deepPurple.shade500),
+      ButtonState.loading: IconedButton(
+          text: 'Loading',
+          color: widget.buttonLoadingColor ?? Colors.deepPurple.shade700),
       ButtonState.fail: IconedButton(
-          text: 'Failed',
-          icon: Icon(Icons.cancel, color: Colors.white),
-          color: Colors.red.shade300),
+          text: widget.failedText ?? 'Failed',
+          icon:  Icon(Icons.cancel, color: Colors.white),
+          color: widget.buttonFailedColor ?? Colors.red.shade300),
       ButtonState.success: IconedButton(
-          text: 'Success',
+          text: widget.successText ?? 'Success',
           icon: Icon(
             Icons.check_circle,
             color: Colors.white,
           ),
-          color: Colors.green.shade400)
+          color: widget.buttonSuccesColor ?? Colors.green.shade400)
     }, onPressed: onPressedIconWithText, state: stateTextWithIcon);
   }
 
@@ -43,9 +66,9 @@ class _ProgressButtonWgState extends State<ProgressButtonWg> {
         stateTextWithIcon = ButtonState.loading;
         Future.delayed(
           Duration(seconds: 1),
-              () {
+          () {
             setState(
-                  () {
+              () {
                 stateTextWithIcon = Random.secure().nextBool()
                     ? ButtonState.success
                     : ButtonState.fail;
@@ -65,9 +88,9 @@ class _ProgressButtonWgState extends State<ProgressButtonWg> {
         break;
     }
     setState(
-            () {
-          stateTextWithIcon = stateTextWithIcon;
-        },
-        );
-   }
+      () {
+        stateTextWithIcon = stateTextWithIcon;
+      },
+    );
+  }
 }

@@ -1,5 +1,5 @@
 name: ek_widget
-description: Bu paket Enes KOC un ulusturdugu widgetleri kapsar
+description: Bu paket Enes KOC un ulusturdugu widgetleri kapsar "This packet is inculude make widgets of Enes KOÇ
 version: 0.0.1
 
 
@@ -8,9 +8,13 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  animated_button: ^0.2.0
+  avatar_glow: ^2.0.2
   flutter:
     sdk: flutter
+  fluttertoast: ^8.1.1
   progress_state_button: ^1.0.4
+
 
 dev_dependencies:
   flutter_test:
