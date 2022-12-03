@@ -16,6 +16,7 @@ export 'package:ek_widget/expand/expend_letter_widget.dart';
 //Login page paketleri
 export 'package:ek_widget/pages/fade_login.dart';
 export 'package:ek_widget/pages/login_page.dart';
+export 'package:ek_widget/pages/login_page_background_clean.dart';
 
 //Drawer paketlerş
 export 'package:ek_widget/drawer/draver1.dart';
