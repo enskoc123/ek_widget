@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   fluttertoast: ^8.1.1
+  image_network: ^2.5.1
   progress_state_button: ^1.0.4
 
 
