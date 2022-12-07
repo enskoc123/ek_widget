@@ -12,9 +12,10 @@ class OnOffButton extends StatefulWidget {
   Color? colorForOff;
   Color? textColorForOn;
   Color? textColorForOff;
+  var onPress;
 
   OnOffButton(
-      {this.textForOn, this.textForOff, this.colorForOn, this.colorForOff,this.textColorForOff,this.textColorForOn});
+      {this.textForOn, this.textForOff, this.colorForOn, this.colorForOff,this.textColorForOff,this.textColorForOn,this.onPress});
 }
 
 class _OnOffButtonState extends State<OnOffButton>
@@ -31,6 +32,7 @@ class _OnOffButtonState extends State<OnOffButton>
               () {
             isTapped = !isTapped;
             HapticFeedback.lightImpact();
+            widget.onPress();
           },
         );
       },

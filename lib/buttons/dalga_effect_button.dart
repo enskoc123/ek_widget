@@ -10,8 +10,9 @@ class DalgaliButton extends StatefulWidget {
   int? iconSize;
   Color? iconColor;
   Color? backgroundColor;
+  var onPressed;
 
-  DalgaliButton({this.icon,this.iconColor,this.iconSize,this.backgroundColor});
+  DalgaliButton({this.icon,this.iconColor,this.iconSize,this.backgroundColor,this.onPressed});
 }
 
 class _DalgaliButtonState extends State<DalgaliButton>
@@ -61,7 +62,7 @@ class _DalgaliButtonState extends State<DalgaliButton>
           ),
           child: IconButton(
             onPressed: () {
-              print('button tapped');
+              widget.onPressed();
             },
             color:widget.iconColor ?? Colors.blue,
             icon:widget.icon ?? Icon(

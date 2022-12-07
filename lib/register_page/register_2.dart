@@ -1,85 +1,77 @@
 import 'dart:async';
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class LoginPageBackCln extends StatefulWidget {
+class Register2 extends StatefulWidget {
   @override
-  _LoginPageBackClnState createState() => _LoginPageBackClnState();
+  _Register2State createState() => _Register2State();
 
-  //Tüm txt değişlenler
-  String? appName;
-  String? userNAme;
-  String? eMail;
-  String? passWord;
-  String? loginButtonText;
-  String? forgetPassButText;
-  String? creataNewAccountText;
+  //Tittle variables
+  String? tittleText;
+  Color? tittleTextColor;
 
-
-  //uygulama adının rengi
-  Color? appNameTextColor;
-
-  //textfield ların  tex ve hintext rengi
-  Color? hinttextColor;
+  // Textfield variables
+  String? hintTextUserName;
+  String? hintTextPassword;
   Color? textFieldTextColor;
+  Color? textFieldHintTextColor;
 
-  //butonların ortan katman rengi
-  Color? boxButtonColor;
-  Color? buttonTextColor;
+  // Button variables
+  String? loginButtonText;
+  String? forgettenPassButtonText;
+  Color? buttonsTextColor;
+  Color? buttonsColor;
 
-  // iconların ortak rengi
+  String? newAccountButtonText;
+
+
+  // Icons
   Color? iconColor;
-
-  //arkaplan rengi
-  Color? backGroundColor;
-
-  //Animasyon renkleri
-  Color? circleColor1;
-  Color? circleColor2;
-
   IconData? userIcon;
-  IconData? mailIcon;
   IconData? passIcon;
 
-  //on pressed
-  var girisYapbuttonFonksyon;
-  var sifreUnuttumFonksyon;
-  var yeniKullaniciButonFonksyon;
+  //background
+  Color? backGroundColor;
+  String? backGroundImageLink;
 
-  String? networkImageLink;
-  String? backGroundImage;
 
-  LoginPageBackCln(
-      {this.appName,
-        this.userNAme,
-        this.eMail,
-        this.passWord,
+  //Fonksyonlar
+  var loginButonOnTab;
+  var forgetPassButtonOnTab;
+  var createAnewAccountButtonOnTab;
+
+  //Animation color
+  Color? circleColor1;
+  Color? circleColor2;
+  String? logoImageLink;
+
+  Register2(
+      {this.tittleText,
+        this.hintTextUserName,
+        this.hintTextPassword,
         this.loginButtonText,
-        this.forgetPassButText,
-        this.creataNewAccountText,
-        this.buttonTextColor,
-        this.appNameTextColor,
+        this.forgettenPassButtonText,
+        this.newAccountButtonText,
+        this.buttonsTextColor,
+        this.tittleTextColor,
         this.textFieldTextColor,
-        this.hinttextColor,
-        this.boxButtonColor,
+        this.textFieldHintTextColor,
+        this.buttonsColor,
         this.iconColor,
         this.backGroundColor,
         this.circleColor1,
         this.circleColor2,
-        this.girisYapbuttonFonksyon,
-        this.yeniKullaniciButonFonksyon,
-        this.sifreUnuttumFonksyon,
+        this.loginButonOnTab,
+        this.createAnewAccountButtonOnTab,
+        this.forgetPassButtonOnTab,
         this.userIcon,
-        this.mailIcon,
         this.passIcon,
-        this.networkImageLink,
-        this.backGroundImage
-      });
+        this.logoImageLink
+        ,this.backGroundImageLink});
 }
 
-class _LoginPageBackClnState extends State<LoginPageBackCln> with TickerProviderStateMixin {
+class _Register2State extends State<Register2> with TickerProviderStateMixin {
   late AnimationController controller1;
   late AnimationController controller2;
   late Animation<double> animation1;
@@ -171,26 +163,76 @@ class _LoginPageBackClnState extends State<LoginPageBackCln> with TickerProvider
     return Scaffold(
       backgroundColor: widget.backGroundColor ?? Color(0xff192028),
       body: ScrollConfiguration(
-        behavior: MyBehaviorLgClean(),
+        behavior: MyBehaviorReg2(),
         child: SingleChildScrollView(
           child: SizedBox(
             height: size.height,
             child: Stack(
               children: [
-                if (widget.backGroundImage != null)
+                if (widget.backGroundImageLink != null)
                   Image.network(
-                    widget.backGroundImage ??
+                    widget.backGroundImageLink ??
                         "http://mzkarakas.com/wp-content/uploads/2020/06/flutterlogo.jpg",
                     height: size.height,
                     width: size.width ,
                     fit: BoxFit.fitHeight,
                   ),
-                if (widget.networkImageLink != null)
+                Positioned(
+                  top: size.height * (animation2.value + .58),
+                  left: size.width * .21,
+                  child: CustomPaint(
+                    painter: MyPainterReg2(
+                        radius: 50,
+                        color1: widget.circleColor1,
+                        color2: widget.circleColor2),
+                  ),
+                ),
+                Positioned(
+                  top: size.height * .98,
+                  left: size.width * .1,
+                  child: CustomPaint(
+                    painter: MyPainterReg2(
+                        radius: animation4.value - 30,
+                        color1: widget.circleColor1,
+                        color2: widget.circleColor2),
+                  ),
+                ),
+                Positioned(
+                  top: size.height * .5,
+                  left: size.width * (animation2.value + .8),
+                  child: CustomPaint(
+                    painter: MyPainterReg2(
+                        radius: 30,
+                        color1: widget.circleColor1,
+                        color2: widget.circleColor2),
+                  ),
+                ),
+                Positioned(
+                  top: size.height * animation3.value,
+                  left: size.width * (animation1.value + .1),
+                  child: CustomPaint(
+                    painter: MyPainterReg2(
+                        radius: 60,
+                        color1: widget.circleColor1,
+                        color2: widget.circleColor2),
+                  ),
+                ),
+                Positioned(
+                  top: size.height * .1,
+                  left: size.width * .8,
+                  child: CustomPaint(
+                    painter: MyPainterReg2(
+                        radius: animation4.value,
+                        color1: widget.circleColor1,
+                        color2: widget.circleColor2),
+                  ),
+                ),
+                if (widget.logoImageLink != null)
                   Padding(
                     padding:
                     const EdgeInsets.only(top: 110, left: 150, right: 150),
                     child: Image.network(
-                      widget.networkImageLink ??
+                      widget.logoImageLink ??
                           "http://mzkarakas.com/wp-content/uploads/2020/06/flutterlogo.jpg",
                       height: size.width / 3,
                       width: size.width / 3,
@@ -203,9 +245,9 @@ class _LoginPageBackClnState extends State<LoginPageBackCln> with TickerProvider
                       child: Padding(
                         padding: EdgeInsets.only(top: size.height * .1),
                         child: Text(
-                          widget.appName ?? 'APP NAME',
+                          widget.tittleText ?? 'APP NAME',
                           style: TextStyle(
-                            color: widget.appNameTextColor ??
+                            color: widget.tittleTextColor ??
                                 Colors.white.withOpacity(.7),
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
@@ -222,13 +264,11 @@ class _LoginPageBackClnState extends State<LoginPageBackCln> with TickerProvider
                         children: [
                           component1(
                               widget.userIcon ?? Icons.account_circle_outlined,
-                              widget.userNAme ?? 'User name...',
+                              widget.hintTextUserName ?? 'User name...',
                               false,
                               false),
-                          component1(widget.mailIcon ?? Icons.email_outlined,
-                              widget.eMail ?? 'Email...', false, true),
                           component1(widget.passIcon ?? Icons.lock_outline,
-                              widget.passWord ?? 'Password...', true, false),
+                              widget.hintTextPassword ?? 'Password...', true, false),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -236,17 +276,17 @@ class _LoginPageBackClnState extends State<LoginPageBackCln> with TickerProvider
                                 widget.loginButtonText ?? 'LOGIN',
                                 2.58,
                                     () {
-                                  widget.girisYapbuttonFonksyon();
+                                  widget.loginButonOnTab();
                                   HapticFeedback.lightImpact();
                                 },
                               ),
                               SizedBox(width: size.width / 20),
                               component2(
-                                widget.forgetPassButText ??
+                                widget.forgettenPassButtonText ??
                                     'Forgotten password!',
                                 2.58,
                                     () {
-                                  widget.sifreUnuttumFonksyon();
+                                  widget.forgetPassButtonOnTab();
                                   HapticFeedback.lightImpact();
                                 },
                               ),
@@ -261,11 +301,11 @@ class _LoginPageBackClnState extends State<LoginPageBackCln> with TickerProvider
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           component2(
-                            widget.creataNewAccountText ??
+                            widget.newAccountButtonText ??
                                 'Create a new Account',
                             2,
                                 () {
-                              widget.yeniKullaniciButonFonksyon();
+                              widget.createAnewAccountButtonOnTab();
                               HapticFeedback.lightImpact();
                             },
                           ),
@@ -320,7 +360,7 @@ class _LoginPageBackClnState extends State<LoginPageBackCln> with TickerProvider
               hintText: hintText,
               hintStyle: TextStyle(
                   fontSize: 14,
-                  color: widget.hinttextColor ?? Colors.white.withOpacity(.5)),
+                  color: widget.textFieldHintTextColor ?? Colors.white.withOpacity(.5)),
             ),
           ),
         ),
@@ -343,14 +383,14 @@ class _LoginPageBackClnState extends State<LoginPageBackCln> with TickerProvider
             width: size.width / width,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: widget.boxButtonColor ?? Colors.white.withOpacity(.05),
+              color: widget.buttonsColor ?? Colors.white.withOpacity(.05),
               borderRadius: BorderRadius.circular(15),
             ),
             child: Text(
               string,
               style: TextStyle(
                   color:
-                  widget.buttonTextColor ?? Colors.white.withOpacity(.8)),
+                  widget.buttonsTextColor ?? Colors.white.withOpacity(.8)),
             ),
           ),
         ),
@@ -359,12 +399,12 @@ class _LoginPageBackClnState extends State<LoginPageBackCln> with TickerProvider
   }
 }
 
-class MyPainterCln extends CustomPainter {
+class MyPainterReg2 extends CustomPainter {
   final double radius;
   Color? color1;
   Color? color2;
 
-  MyPainterCln({required this.radius, this.color1, this.color2});
+  MyPainterReg2({required this.radius, this.color1, this.color2});
 
   //[Color(0xffFD5E3D), Color(0xffC43990)]
   @override
@@ -388,7 +428,7 @@ class MyPainterCln extends CustomPainter {
   }
 }
 
-class MyBehaviorLgClean extends ScrollBehavior {
+class MyBehaviorReg2 extends ScrollBehavior {
   @override
   Widget buildViewportChrome(
       BuildContext context, Widget child, AxisDirection axisDirection) {

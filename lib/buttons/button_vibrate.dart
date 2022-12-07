@@ -7,8 +7,9 @@ class ButtonTrying extends StatefulWidget {
 
   Color? color;
   String? buttonText;
+  var onPressed;
 
-  ButtonTrying({this.color, this.buttonText});
+  ButtonTrying({this.color, this.buttonText,this.onPressed});
 }
 
 class _ButtonTryingState extends State<ButtonTrying>
@@ -25,7 +26,9 @@ class _ButtonTryingState extends State<ButtonTrying>
           isTapped = value;
         });
       },
-      onTap: () {},
+      onTap: () {
+        widget.onPressed();
+      },
       child: AnimatedContainer(
         duration: Duration(milliseconds: 300),
         curve: Curves.fastLinearToSlowEaseIn,

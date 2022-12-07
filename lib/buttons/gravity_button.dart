@@ -8,12 +8,14 @@ class GravityButton extends StatefulWidget {
   Color? iconDownColor;
   Color? upColor;
   Color? downColor;
+  var onPressed;
 
   GravityButton(
       {this.iconUpColor,
       this.iconDownColor,
       this.upColor,
-      this.downColor});
+      this.downColor,
+      this.onPressed});
 }
 
 class _GravityButtonState extends State<GravityButton> {

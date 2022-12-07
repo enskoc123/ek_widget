@@ -9,9 +9,10 @@ class SwichAnimButton extends StatefulWidget {
   Color? swichRightColor;
   Color? swichLeftColor;
   Color? circleColor;
+  var onPress;
 
 
-  SwichAnimButton({this.swichRightColor, this.swichLeftColor,});
+  SwichAnimButton({this.swichRightColor, this.swichLeftColor,this.onPress,this.circleColor});
 }
 
 class _SwichAnimButtonState extends State<SwichAnimButton>

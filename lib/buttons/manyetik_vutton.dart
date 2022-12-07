@@ -24,7 +24,7 @@ class _ManyeticButtonState extends State<ManyeticButton> {
         decoration: BoxDecoration(
           color:widget.color ?? Color(0xff8639FB),
           borderRadius: BorderRadius.all(
-            Radius.circular(5),
+            Radius.circular(10),
           ),
           boxShadow: [
             BoxShadow(

@@ -5,14 +5,86 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class FadeAutLogin extends StatefulWidget {
-  const FadeAutLogin({Key? key}) : super(key: key);
+class LoginPage3 extends StatefulWidget {
 
   @override
-  _FadeAutLoginState createState() => _FadeAutLoginState();
+  _LoginPage3State createState() => _LoginPage3State();
+
+  //Tittle variables
+  String? tittleText;
+  Color? tittleTextColor;
+
+  // Textfield variables
+  String? hintTextUserName;
+  String? hintTextPassword;
+  Color? textFieldTextColor;
+  Color? textFieldHintTextColor;
+
+    // Button variables
+  String? loginButtonText;
+  String? forgettenPassButtonText;
+  String? newAccountButtonText;
+
+  Color? buttonsTextColor;
+  Color? buttonsColor;
+  Color? newAccountTextColor;
+
+  //Icons
+  Color? iconColor;
+  IconData? userIcon;
+  IconData? passIcon;
+
+  // Container on BackGround
+  Color? backGroundContainerColor;
+  //Pages background color
+  Color? pageBackGroundColor1;
+  Color? pageBackGroundColor2;
+
+  //appBar
+  Widget? appBarBackButtonIcon;
+
+  //Fonksyonlar
+  var appBarBackButtonOnTab;
+
+  var loginButonOnTab;
+  var forgetPassButtonOnTab;
+  var createAnewAccountButtonOnTab;
+
+  //CONTROLLER
+  TextEditingController userNameController;
+  TextEditingController userPassController;
+
+
+  LoginPage3(
+      {this.tittleText,
+      this.hintTextUserName,
+      this.hintTextPassword,
+      this.loginButtonText,
+      this.forgettenPassButtonText,
+      this.newAccountButtonText,
+      this.tittleTextColor,
+      this.textFieldTextColor,
+      this.textFieldHintTextColor,
+      this.iconColor,
+      this.buttonsTextColor,
+      this.buttonsColor,
+      this.backGroundContainerColor,
+      this.pageBackGroundColor1,
+        this.pageBackGroundColor2,
+        this.newAccountTextColor,
+      this.userIcon,
+      this.passIcon,
+        this.appBarBackButtonIcon,
+        this.appBarBackButtonOnTab,
+        this.createAnewAccountButtonOnTab,
+        this.forgetPassButtonOnTab,
+        this.loginButonOnTab,
+       required this.userNameController,
+        required this.userPassController
+      });
 }
 
-class _FadeAutLoginState extends State<FadeAutLogin>
+class _LoginPage3State extends State<LoginPage3>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _opacity;
@@ -58,11 +130,17 @@ class _FadeAutLoginState extends State<FadeAutLogin>
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         brightness: Brightness.dark,
-        backgroundColor: Colors.transparent,
+        backgroundColor:Colors.transparent,
         elevation: 0,
+        leading: IconButton(
+          onPressed: (){
+           Navigator.pop(context);
+          },
+          icon:widget.appBarBackButtonIcon ??  Icon(Icons.arrow_back_ios),
+        ),
       ),
       body: ScrollConfiguration(
-        behavior: MyBehavior(),
+        behavior: MyBehaviorfd(),
         child: SingleChildScrollView(
           child: SizedBox(
             height: size.height,
@@ -73,8 +151,8 @@ class _FadeAutLoginState extends State<FadeAutLogin>
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    Color(0xffFEC37B),
-                    Color(0xffFF4184),
+                   widget.pageBackGroundColor1 ?? Color(0xffFEC37B),
+                   widget.pageBackGroundColor2 ?? Color(0xffFF4184),
                   ],
                 ),
               ),
@@ -86,7 +164,7 @@ class _FadeAutLoginState extends State<FadeAutLogin>
                     width: size.width * .9,
                     height: size.width * 1.1,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color:widget.backGroundContainerColor ?? Colors.white,
                       borderRadius: BorderRadius.circular(15),
                       boxShadow: [
                         BoxShadow(
@@ -99,67 +177,62 @@ class _FadeAutLoginState extends State<FadeAutLogin>
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         SizedBox(),
-                        Text(
+                        Text(widget.tittleText ??
                           'Sign In',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w600,
-                            color: Colors.black.withOpacity(.7),
+                            color:widget.tittleTextColor ?? Colors.black.withOpacity(.7),
                           ),
                         ),
                         SizedBox(),
-                        component1(Icons.account_circle_outlined,
-                            'User name...', false, false),
+                        component1(icon: widget.userIcon ?? Icons.account_circle_outlined,
+                         hintText:  widget.hintTextUserName ?? 'User name...',
+                            isPassword:  false,isEmail:  false,controller: widget.userNameController),
                         component1(
-                            Icons.email_outlined, 'Email...', false, true),
-                        component1(
-                            Icons.lock_outline, 'Password...', true, false),
+                         icon: widget.passIcon ??  Icons.lock_outline,
+                            hintText: widget.hintTextPassword ?? 'Password...',
+                            isPassword:  true,isEmail:  false,controller: widget.userPassController),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             component2(
-                              'LOGIN',
+                           widget.loginButtonText ??   'LOGIN',
                               2.6,
                                   () {
                                 HapticFeedback.lightImpact();
-                                Fluttertoast.showToast(
-                                    msg: 'Login button pressed');
+                                widget.loginButonOnTab();
+
                               },
                             ),
                             SizedBox(width: size.width / 25),
-                            Container(
-                              width: size.width / 2.6,
-                              alignment: Alignment.center,
-                              child: RichText(
-                                text: TextSpan(
-                                  text: 'Forgotten password!',
-                                  style: TextStyle(color: Colors.blueAccent),
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () {
-                                      Fluttertoast.showToast(
-                                        msg:
-                                        'Forgotten password! button pressed',
-                                      );
-                                    },
-                                ),
-                              ),
-                            )
+                            component2(
+                              widget.forgettenPassButtonText ??   'Forgetten Password',
+                              2.6,
+                                  () {
+                                HapticFeedback.lightImpact();
+                                widget.forgetPassButtonOnTab();
+
+                              },
+                            ),
                           ],
                         ),
                         SizedBox(),
-                        RichText(
-                          text: TextSpan(
-                            text: 'Create a new Account',
-                            style: TextStyle(
-                              color: Colors.blueAccent,
-                              fontSize: 15,
+                        Container(
+                          width: size.width / 2.6,
+                          alignment: Alignment.center,
+                          child: RichText(
+                            text: TextSpan(
+                              text:widget.newAccountButtonText ?? 'Create a new Account',
+                              style: TextStyle(
+                                color:widget.newAccountTextColor ?? Colors.blueAccent,
+                                fontSize: 15,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                widget.createAnewAccountButtonOnTab();
+                                },
                             ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                Fluttertoast.showToast(
-                                  msg: 'Create a new Account button pressed',
-                                );
-                              },
                           ),
                         ),
                         SizedBox(),
@@ -176,7 +249,7 @@ class _FadeAutLoginState extends State<FadeAutLogin>
   }
 
   Widget component1(
-      IconData icon, String hintText, bool isPassword, bool isEmail) {
+      {required IconData icon,required String hintText,required bool isPassword,required bool isEmail,required controller}) {
     Size size = MediaQuery.of(context).size;
     return Container(
       height: size.width / 8,
@@ -188,19 +261,20 @@ class _FadeAutLoginState extends State<FadeAutLogin>
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextField(
-        style: TextStyle(color: Colors.black.withOpacity(.8)),
+        controller: controller,
+        style: TextStyle(color:widget.textFieldTextColor ?? Colors.black.withOpacity(.8)),
         obscureText: isPassword,
         keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
         decoration: InputDecoration(
           prefixIcon: Icon(
             icon,
-            color: Colors.black.withOpacity(.7),
+            color:widget.iconColor ?? Colors.black.withOpacity(.7),
           ),
           border: InputBorder.none,
           hintMaxLines: 1,
           hintText: hintText,
           hintStyle:
-          TextStyle(fontSize: 14, color: Colors.black.withOpacity(.5)),
+          TextStyle(fontSize: 14, color:widget.textFieldHintTextColor ?? Colors.black.withOpacity(.5)),
         ),
       ),
     );
@@ -217,19 +291,19 @@ class _FadeAutLoginState extends State<FadeAutLogin>
         width: size.width / width,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Color(0xff4796ff),
+          color:widget.buttonsColor ?? Color(0xff4796ff),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Text(
           string,
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+          style: TextStyle(color:widget.buttonsTextColor ?? Colors.white, fontWeight: FontWeight.w600),
         ),
       ),
     );
   }
 }
 
-class MyBehavior extends ScrollBehavior {
+class MyBehaviorfd extends ScrollBehavior {
   @override
   Widget buildViewportChrome(
       BuildContext context,
