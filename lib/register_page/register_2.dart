@@ -13,7 +13,9 @@ class Register2 extends StatefulWidget {
 
   // Textfield variables
   String? hintTextUserName;
+  String? hintTextEmail;
   String? hintTextPassword;
+  String? hintTextPasswordAgain;
   Color? textFieldTextColor;
   Color? textFieldHintTextColor;
 
@@ -46,6 +48,13 @@ class Register2 extends StatefulWidget {
   Color? circleColor2;
   String? logoImageLink;
 
+  //CONTROLLER
+  var userNameController = TextEditingController();
+  var eMailController = TextEditingController();
+  var userPassController = TextEditingController();
+  var userPassAgainController = TextEditingController();
+
+
   Register2(
       {this.tittleText,
         this.hintTextUserName,
@@ -68,7 +77,13 @@ class Register2 extends StatefulWidget {
         this.userIcon,
         this.passIcon,
         this.logoImageLink
-        ,this.backGroundImageLink});
+        ,this.backGroundImageLink,
+        required this.userNameController,
+        required this.userPassController,
+        required this.eMailController,
+        required this.userPassAgainController,
+      this.hintTextPasswordAgain,
+      this.hintTextEmail});
 }
 
 class _Register2State extends State<Register2> with TickerProviderStateMixin {
@@ -262,13 +277,22 @@ class _Register2State extends State<Register2> with TickerProviderStateMixin {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          component1(
+                          component1(icon:
                               widget.userIcon ?? Icons.account_circle_outlined,
-                              widget.hintTextUserName ?? 'User name...',
-                              false,
-                              false),
-                          component1(widget.passIcon ?? Icons.lock_outline,
-                              widget.hintTextPassword ?? 'Password...', true, false),
+                             hintText:  widget.hintTextUserName ?? 'User name...',
+                              isEmail: false,
+                             isPassword:  false,
+                          controller: widget.userNameController),
+                          component1(icon:
+                          widget.userIcon ?? Icons.account_circle_outlined,
+                              hintText:  widget.hintTextEmail ?? 'E-Mail...',
+                              isEmail: true,
+                              isPassword:  false,
+                              controller: widget.userNameController),
+                          component1(icon: widget.passIcon ?? Icons.lock_outline,
+                             hintText:  widget.hintTextPassword ?? 'Password...',isPassword:  true,isEmail:  false,controller: widget.userPassController),
+                          component1(icon: widget.passIcon ?? Icons.lock_outline,
+                              hintText:  widget.hintTextPasswordAgain ?? 'Password Again...',isPassword:  true,isEmail:  false,controller: widget.userPassAgainController),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -324,7 +348,7 @@ class _Register2State extends State<Register2> with TickerProviderStateMixin {
   }
 
   Widget component1(
-      IconData icon, String hintText, bool isPassword, bool isEmail) {
+      {required IconData icon,required String hintText,required bool isPassword,required bool isEmail,required controller}) {
     Size size = MediaQuery.of(context).size;
     return ClipRRect(
       borderRadius: BorderRadius.circular(15),
@@ -343,6 +367,7 @@ class _Register2State extends State<Register2> with TickerProviderStateMixin {
             borderRadius: BorderRadius.circular(15),
           ),
           child: TextField(
+            controller: controller,
             style: TextStyle(
                 color:
                 widget.textFieldTextColor ?? Colors.white.withOpacity(.8)),

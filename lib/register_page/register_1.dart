@@ -24,10 +24,8 @@ class Register1 extends StatefulWidget {
   Color? textFieldHintTextColor;
 
   // Button variables
-  String? loginButtonText;
-  String? forgettenPassButtonText;
+  String? registerButtonText;
   String? newAccountButtonText;
-
   Color? buttonsTextColor;
   Color? buttonsColor;
   Color? newAccountTextColor;
@@ -47,8 +45,8 @@ class Register1 extends StatefulWidget {
   Widget? appBarBackButtonIcon;
   //Fonksyonlar
   var appBarBackButtonOnTab;
-  var loginButonOnTab;
-  var forgetPassButtonOnTab;
+  var registerButonOnTab;
+  var loginButtonOnTab;
   var createAnewAccountButtonOnTab;
 
   //CONTROLLER
@@ -64,8 +62,7 @@ class Register1 extends StatefulWidget {
         this.hintTextPassword,
         this.hintTextEmail,
         this.hintTextPasswordAgain,
-        this.loginButtonText,
-        this.forgettenPassButtonText,
+        this.registerButtonText,
         this.newAccountButtonText,
         this.tittleTextColor,
         this.textFieldTextColor,
@@ -82,8 +79,8 @@ class Register1 extends StatefulWidget {
         this.appBarBackButtonIcon,
         this.appBarBackButtonOnTab,
         this.createAnewAccountButtonOnTab,
-        this.forgetPassButtonOnTab,
-        this.loginButonOnTab,
+        this.loginButtonOnTab,
+        this.registerButonOnTab,
         required this.userNameController,
         required this.userPassController,
         required this.eMailController,
@@ -211,11 +208,13 @@ class _Register1State extends State<Register1>
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             component2(
-                              widget.loginButtonText ??   'Sign in',
+                              widget.registerButtonText ??   'Sign in',
                               2.6,
                                   () {
                                 HapticFeedback.lightImpact();
-                                widget.loginButonOnTab();
+
+                                widget.registerButonOnTab();
+
 
                               },
                             ),
@@ -230,14 +229,14 @@ class _Register1State extends State<Register1>
                           alignment: Alignment.center,
                           child: RichText(
                             text: TextSpan(
-                              text:widget.newAccountButtonText ?? 'Create a new Account',
+                              text:widget.newAccountButtonText ?? 'Already have an account?',
                               style: TextStyle(
                                 color:widget.newAccountTextColor ?? Colors.blueAccent,
                                 fontSize: 15,
                               ),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
-                                  widget.createAnewAccountButtonOnTab();
+                                  widget.loginButtonOnTab();
                                 },
                             ),
                           ),

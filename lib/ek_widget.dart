@@ -1,6 +1,6 @@
 library ek_widget;
 //Buton paketleri
-export 'package:ek_widget/buttons/button_vibrate.dart';
+export 'package:ek_widget/buttons/button_trying.dart';
 export 'package:ek_widget/buttons/progressButton.dart';
 export 'package:ek_widget/buttons/dalga_effect_button.dart';
 export 'package:ek_widget/buttons/dalgali_button2.dart';
@@ -25,3 +25,9 @@ export 'package:ek_widget/drawer/draver1.dart';
 export 'package:ek_widget/register_page/register_1.dart';
 export 'package:ek_widget/register_page/register_2.dart';
 export 'package:ek_widget/register_page/register_3.dart';
+
+//textField paketleri
+export 'package:ek_widget/textfield/textfield1.dart';
+export 'package:ek_widget/textfield/textField2.dart';
+export 'package:ek_widget/textfield/textfield3.dart';
+export 'package:ek_widget/textfield/textfield4.dart';

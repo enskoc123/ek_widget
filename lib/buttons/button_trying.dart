@@ -6,10 +6,12 @@ class ButtonTrying extends StatefulWidget {
   _ButtonTryingState createState() => _ButtonTryingState();
 
   Color? color;
+  Color? textColor;
+  Color? shadowColor;
   String? buttonText;
   var onPressed;
 
-  ButtonTrying({this.color, this.buttonText,this.onPressed});
+  ButtonTrying({this.color, this.buttonText,this.onPressed,this.textColor,this.shadowColor});
 }
 
 class _ButtonTryingState extends State<ButtonTrying>
@@ -41,7 +43,7 @@ class _ButtonTryingState extends State<ButtonTrying>
           ),
           boxShadow: [
             BoxShadow(
-              color: widget.color ?? Colors.black.withOpacity(0.3),
+              color: widget.shadowColor ?? Colors.black.withOpacity(0.3),
               blurRadius: 30,
               offset: Offset(3, 7),
             ),
@@ -51,7 +53,7 @@ class _ButtonTryingState extends State<ButtonTrying>
           child: Text(
             widget.buttonText ??'Button try',
             style: TextStyle(
-              color: Colors.black.withOpacity(0.7),
+              color:widget.textColor ?? Colors.black.withOpacity(0.7),
               fontWeight: FontWeight.w500,
               fontSize: 19,
             ),
