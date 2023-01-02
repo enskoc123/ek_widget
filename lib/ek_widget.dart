@@ -31,3 +31,7 @@ export 'package:ek_widget/textfield/textfield1.dart';
 export 'package:ek_widget/textfield/textField2.dart';
 export 'package:ek_widget/textfield/textfield3.dart';
 export 'package:ek_widget/textfield/textfield4.dart';
+export 'package:ek_widget/textfield/textfield5.dart';
+export 'package:ek_widget/textfield/textfield6.dart';
+export 'package:ek_widget/textfield/textfield7.dart';
+export 'package:ek_widget/textfield/desctription_tf.dart';

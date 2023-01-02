@@ -1,53 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class FullVariableTextField extends StatelessWidget {
+class PasswordTextField extends StatelessWidget {
   Color? boxColor;
   Color? textColor;
   Color? hintTextColor;
-  Color? suffixTextColor;
   Color? labelTextColor;
   Color? iconColor;
   Color? prefixTextColor;
-  Color? focusedBorderColor; // dış çemberin focused rengi
-  Color? enabledBorderColor;//Textfield ın dış çemberinin rengi
-  double? enabledBorderRadius; //textfield a tıklanadan önce dış çemberin köşe ovallik oranı
-  double? focusedBorderRadius;//textfield a tıklanıp focuslandıktan sonra dış çemberin köşe ovallik oranı
-
+  Color? focusedBorderColor;
+  Color? enabledBorderColor;
+  double? focusedBorderRadius;
+  double? enabledBorderRadius;
   String? hintText;
   String? labelText;
   String? prefixText;
-  String? suffixText;
 
   var controller = TextEditingController();
   IconData? icon;
-
   int? maxLength;
-
-
-  FullVariableTextField(
-      {this.boxColor,
-        this.textColor,
-        this.hintTextColor,
-        this.labelTextColor,
-        this.iconColor,
-        this.prefixTextColor,
-        this.enabledBorderColor,
-        this.focusedBorderColor,
-        this.enabledBorderRadius,
-        this.focusedBorderRadius,
-        this.suffixTextColor,
-        this.suffixText,
-        this.hintText,
-        this.labelText,
-        this.prefixText,
-        required this.controller,
-        this.icon,
-        this.maxLength});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return  Padding(
       padding: const EdgeInsets.all(18.0),
       child: TextFormField(
         textInputAction: TextInputAction.next,
@@ -57,13 +32,13 @@ class FullVariableTextField extends StatelessWidget {
           fillColor:boxColor ?? Colors.white,
           focusColor: Colors.black,
           hoverColor: Colors.black,
+
+
           filled: true,
-          hintText:hintText,
-          suffixText: suffixText,
-          suffixStyle: TextStyle(color:suffixTextColor ?? Colors.black ),
-          labelText:labelText,
-          prefixText: prefixText,
-          icon: Icon(icon ?? Icons.terrain_outlined,color:iconColor ?? Colors.black),
+          icon: Icon(Icons.phone,color:iconColor ?? Colors.black),
+          hintText:hintText ?? "Telefon Numarası",
+          labelText:labelText ??"tel no",
+          prefixText: prefixText ??'+90 ',
           labelStyle: TextStyle(color:labelTextColor ?? Colors.black),
           prefixStyle: TextStyle(color:prefixTextColor ?? Colors.black),
           hintStyle: TextStyle(color:hintTextColor ?? Colors.black),
@@ -79,6 +54,7 @@ class FullVariableTextField extends StatelessWidget {
         inputFormatters: [
           LengthLimitingTextInputFormatter(10),
         ],
+        keyboardType: TextInputType.phone,
         onSaved: (value) {
 
         },

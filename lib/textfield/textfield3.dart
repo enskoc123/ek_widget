@@ -20,7 +20,7 @@ class TextField3 extends StatelessWidget {
       this.textColor,
       this.hintTextColor,
       this.prefixIconColor,
-        this.suffixiconColor,
+      this.suffixiconColor,
       this.hintText,
       required this.isPassword,
       required this.isEmail,
@@ -49,15 +49,18 @@ class TextField3 extends StatelessWidget {
             isEmail! ? TextInputType.emailAddress : TextInputType.text,
         decoration: InputDecoration(
           prefixIcon: Icon(
-            prefixIcon ,
+            prefixIcon,
             color: prefixIconColor ?? Colors.black.withOpacity(.7),
           ),
-
-          suffixIcon:GestureDetector(
-              child: Icon(suffixIcon,color: suffixiconColor,),
-          onTap: (){
-                suffixIconOnTab();
-          },),
+          suffixIcon: GestureDetector(
+            child: Icon(
+              suffixIcon,
+              color: suffixiconColor,
+            ),
+            onTap: () {
+              suffixIconOnTab();
+            },
+          ),
           border: InputBorder.none,
           hintMaxLines: 1,
           hintText: hintText,

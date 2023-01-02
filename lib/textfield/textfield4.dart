@@ -8,10 +8,11 @@ class PhoneNumberTextField extends StatelessWidget {
   Color? labelTextColor;
   Color? iconColor;
   Color? prefixTextColor;
-  Color? focusedBorderColor;
-  Color? enabledBorderColor;
-  double? focusedBorderRadius;
-  double? enabledBorderRadius;
+  Color? focusedBorderColor; // dış çemberin focused rengi
+  Color? enabledBorderColor;//Textfield ın dış çemberinin rengi
+  double? enabledBorderRadius; //textfield a tıklanadan önce dış çemberin köşe ovallik oranı
+  double? focusedBorderRadius;//textfield a tıklanıp focuslandıktan sonra dış çemberin köşe ovallik oranı
+
   String? hintText;
   String? labelText;
   String? prefixText;
@@ -49,12 +50,12 @@ class PhoneNumberTextField extends StatelessWidget {
         decoration: InputDecoration(
           iconColor:iconColor ?? Colors.black,
           fillColor:boxColor ?? Colors.white,
-          focusColor: Colors.black,
+          focusColor: Colors.orange,
           hoverColor: Colors.black,
 
 
           filled: true,
-          icon: Icon(Icons.phone,color:iconColor ?? Colors.black),
+          icon: Icon(icon ?? Icons.phone,color:iconColor ?? Colors.black),
           hintText:hintText ?? "Telefon Numarası",
           labelText:labelText ??"tel no",
           prefixText: prefixText ??'+90 ',

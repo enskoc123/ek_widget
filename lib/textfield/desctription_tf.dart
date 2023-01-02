@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-class FullVariableTextField extends StatelessWidget {
+class DescriptionTextField extends StatelessWidget {
   Color? boxColor;
   Color? textColor;
   Color? hintTextColor;
@@ -21,52 +20,52 @@ class FullVariableTextField extends StatelessWidget {
 
   var controller = TextEditingController();
   IconData? icon;
+  TextAlign? textAlign;
+  int? maxLines;
 
-  int? maxLength;
 
-
-  FullVariableTextField(
+  DescriptionTextField(
       {this.boxColor,
-        this.textColor,
-        this.hintTextColor,
-        this.labelTextColor,
-        this.iconColor,
-        this.prefixTextColor,
-        this.enabledBorderColor,
-        this.focusedBorderColor,
-        this.enabledBorderRadius,
-        this.focusedBorderRadius,
-        this.suffixTextColor,
-        this.suffixText,
-        this.hintText,
-        this.labelText,
-        this.prefixText,
-        required this.controller,
-        this.icon,
-        this.maxLength});
+      this.textColor,
+      this.hintTextColor,
+      this.suffixTextColor,
+      this.labelTextColor,
+      this.iconColor,
+      this.prefixTextColor,
+      this.focusedBorderColor,
+      this.enabledBorderColor,
+      this.enabledBorderRadius,
+      this.focusedBorderRadius,
+      this.hintText,
+      this.labelText,
+      this.prefixText,
+      this.suffixText,
+      required this.controller,
+      this.icon,
+      this.maxLines,
+      this.textAlign});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(18.0),
+      padding: const EdgeInsets.only(right: 18.0,left: 18.0),
       child: TextFormField(
-        textInputAction: TextInputAction.next,
+        restorationId: 'life_story_field',
+        textAlign:textAlign ?? TextAlign.start,
         controller: controller,
         decoration: InputDecoration(
-          iconColor:iconColor ?? Colors.black,
           fillColor:boxColor ?? Colors.white,
-          focusColor: Colors.black,
-          hoverColor: Colors.black,
+          focusColor: Colors.green,
+          hoverColor: Colors.white,
           filled: true,
           hintText:hintText,
           suffixText: suffixText,
           suffixStyle: TextStyle(color:suffixTextColor ?? Colors.black ),
           labelText:labelText,
           prefixText: prefixText,
-          icon: Icon(icon ?? Icons.terrain_outlined,color:iconColor ?? Colors.black),
           labelStyle: TextStyle(color:labelTextColor ?? Colors.black),
           prefixStyle: TextStyle(color:prefixTextColor ?? Colors.black),
-          hintStyle: TextStyle(color:hintTextColor ?? Colors.black),
+          hintStyle: TextStyle(color:hintTextColor ?? Colors.black38),
           focusedBorder: OutlineInputBorder(
             borderSide:  BorderSide(width: 3, color:focusedBorderColor ?? Colors.black),
             borderRadius:BorderRadius.circular(focusedBorderRadius ?? 25.0),
@@ -76,17 +75,7 @@ class FullVariableTextField extends StatelessWidget {
             borderSide: BorderSide(width: 3, color:enabledBorderColor ?? Colors.black), //<-- SEE HERE
           ),
         ),
-        inputFormatters: [
-          LengthLimitingTextInputFormatter(10),
-        ],
-        onSaved: (value) {
-
-        },
-        maxLength:maxLength ?? 10,
-        maxLengthEnforcement: MaxLengthEnforcement.none,
-
-        // TextInputFormatters are applied in sequence.
-
+        maxLines: maxLines ?? 5  ,
       ),
     );
   }

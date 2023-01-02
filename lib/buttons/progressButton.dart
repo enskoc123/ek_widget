@@ -16,7 +16,10 @@ class ProgressButtonWg extends StatefulWidget {
   Color? buttonFailedColor;
   Color? buttonSuccesColor;
   Color? buttonLoadingColor;
-  Widget? sendIcon;
+  Color? iconColor;
+  IconData? sendIcon;
+  IconData? failedIcon;
+  IconData? succesIcon;
   var onPressed;
 
   ProgressButtonWg({
@@ -28,7 +31,10 @@ class ProgressButtonWg extends StatefulWidget {
     this.buttonSuccesColor,
     this.buttonLoadingColor,
     this.sendIcon,
-    this.onPressed
+    this.failedIcon,
+    this.onPressed,
+    this.succesIcon,
+    this.iconColor
   });
 }
 
@@ -41,20 +47,20 @@ class _ProgressButtonWgState extends State<ProgressButtonWg> {
     return ProgressButton.icon(iconedButtons: {
       ButtonState.idle: IconedButton(
           text: widget.mainText ?? 'Send',
-          icon:  Icon(Icons.send, color: Colors.white),
+          icon:  Icon(widget.sendIcon ?? Icons.send, color:widget.iconColor ?? Colors.white),
           color: widget.buttonMainColor ?? Colors.deepPurple.shade500),
       ButtonState.loading: IconedButton(
           text: 'Loading',
           color: widget.buttonLoadingColor ?? Colors.deepPurple.shade700),
       ButtonState.fail: IconedButton(
           text: widget.failedText ?? 'Failed',
-          icon:  Icon(Icons.cancel, color: Colors.white),
+          icon:  Icon(widget.failedIcon ?? Icons.cancel, color:widget.iconColor ?? Colors.white),
           color: widget.buttonFailedColor ?? Colors.red.shade300),
       ButtonState.success: IconedButton(
           text: widget.successText ?? 'Success',
-          icon: Icon(
-            Icons.check_circle,
-            color: Colors.white,
+          icon:  Icon(
+            widget.sendIcon ?? Icons.check_circle,
+            color:widget.iconColor ?? Colors.white,
           ),
           color: widget.buttonSuccesColor ?? Colors.green.shade400)
     }, onPressed: onPressedIconWithText, state: stateTextWithIcon);
