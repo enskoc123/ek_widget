@@ -55,7 +55,7 @@ class PhoneNumberTextField extends StatelessWidget {
 
 
           filled: true,
-          icon: Icon(icon ?? Icons.phone,color:iconColor ?? Colors.black),
+          icon: Icon(icon ?? null,color:iconColor ?? Colors.black),
           hintText:hintText ?? "Telefon Numarası",
           labelText:labelText ??"tel no",
           prefixText: prefixText ??'+90 ',
@@ -78,7 +78,7 @@ class PhoneNumberTextField extends StatelessWidget {
         onSaved: (value) {
 
         },
-        maxLength:maxLength ?? 10,
+        maxLength:maxLength ?? 11,
         maxLengthEnforcement: MaxLengthEnforcement.none,
 
         // TextInputFormatters are applied in sequence.
