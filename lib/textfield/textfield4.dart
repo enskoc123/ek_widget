@@ -37,7 +37,7 @@ class PhoneNumberTextField extends StatelessWidget {
       this.labelText,
       this.prefixText,
      required this.controller,
-      this.icon,
+      this.SuffixIcon,
       this.maxLength});
 
   @override
