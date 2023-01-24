@@ -1,5 +1,4 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SwichAnimButton extends StatefulWidget {
@@ -18,7 +17,7 @@ class SwichAnimButton extends StatefulWidget {
 class _SwichAnimButtonState extends State<SwichAnimButton>
     with TickerProviderStateMixin {
   bool isChecked = false;
-  Duration _duration = Duration(milliseconds: 370);
+  final Duration _duration = const Duration(milliseconds: 370);
   late Animation<Alignment> _animation;
   late AnimationController _animationController;
 
@@ -68,10 +67,10 @@ class _SwichAnimButtonState extends State<SwichAnimButton>
             child: Container(
               width: 100,
               height: 50,
-              padding: EdgeInsets.fromLTRB(0, 6, 0, 6),
+              padding: const EdgeInsets.fromLTRB(0, 6, 0, 6),
               decoration: BoxDecoration(
                 color: isChecked ?widget.swichRightColor?? Colors.green :widget.swichLeftColor?? Colors.red,
-                borderRadius: BorderRadius.all(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(99),
                 ),
                 boxShadow: [
@@ -80,7 +79,7 @@ class _SwichAnimButtonState extends State<SwichAnimButton>
                         ?widget.swichRightColor??  Colors.green.withOpacity(0.6)
                         :widget.swichLeftColor ?? Colors.red.withOpacity(0.6),
                     blurRadius: 15,
-                    offset: Offset(0, 8),
+                    offset: const Offset(0, 8),
                   )
                 ],
               ),

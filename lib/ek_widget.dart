@@ -1,4 +1,5 @@
 library ek_widget;
+
 //Buton paketleri
 export 'package:ek_widget/buttons/button_trying.dart';
 export 'package:ek_widget/buttons/progressButton.dart';
@@ -35,3 +36,12 @@ export 'package:ek_widget/textfield/textfield5.dart';
 export 'package:ek_widget/textfield/textfield6.dart';
 export 'package:ek_widget/textfield/textfield7.dart';
 export 'package:ek_widget/textfield/desctription_tf.dart';
+
+//Text paketleri
+export 'package:ek_widget/text_package/tittle_text.dart';
+export 'package:ek_widget/text_package/big_tittle_text.dart';
+export 'package:ek_widget/text_package/line_header_text.dart';
+
+//Bottom Navigation Bar
+
+export 'package:ek_widget/bottomNavigationBar/bottom_navigation_bar.dart';

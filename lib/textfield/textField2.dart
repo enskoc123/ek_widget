@@ -2,26 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class FullVariableTextField extends StatelessWidget {
+  /// textfield ' ın arkaplan rengi
   Color? boxColor;
+  /// yazılan yazı rengi
   Color? textColor;
+  /// hinttext color
   Color? hintTextColor;
+  /// son ek text in rengi
   Color? suffixTextColor;
+  /// label text in rengi
   Color? labelTextColor;
+  ///iconun rengi
   Color? iconColor;
+  ///ön ek text in rengi
   Color? prefixTextColor;
-  Color? focusedBorderColor; // dış çemberin focused rengi
-  Color? enabledBorderColor;//Textfield ın dış çemberinin rengi
-  double? enabledBorderRadius; //textfield a tıklanadan önce dış çemberin köşe ovallik oranı
-  double? focusedBorderRadius;//textfield a tıklanıp focuslandıktan sonra dış çemberin köşe ovallik oranı
-
+  /// dış çemberin focused rengi
+  Color? focusedBorderColor;
+  ///Textfield ın dış çemberinin rengi
+  Color? enabledBorderColor;
+  ///textfield a tıklanadan önce dış çemberin köşe ovallik oranı
+  double? enabledBorderRadius;
+  ///textfield a tıklanıp focuslandıktan sonra dış çemberin köşe ovallik oranı
+  double? focusedBorderRadius;
+/// hinttext in yazısı
   String? hintText;
+  ///label text
   String? labelText;
+  /// ön ek yazısı
   String? prefixText;
+/// son ek yazısı
   String? suffixText;
 
   var controller = TextEditingController();
   IconData? icon;
-
+/// maximum karakter sayısı
   int? maxLength;
 
 

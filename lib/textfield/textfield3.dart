@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
 class TextField3 extends StatelessWidget {
+  /// textfield zemin rengi
   Color? boxColor;
+  /// text rengi
   Color? textColor;
+  /// hinttext rengi
   Color? hintTextColor;
+  ///son ek icon rengi
   Color? suffixiconColor;
+  ///ön ek icon rengi
   Color? prefixIconColor;
   String? hintText;
   bool? isPassword;

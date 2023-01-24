@@ -1,29 +1,31 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ExpendLetterWidget extends StatefulWidget {
   @override
   _ExpendLetterWidgetState createState() => _ExpendLetterWidgetState();
+/// kutunun içinden çıkan mektup metninin bulunduğu alanın arkaplan rengi
+  Color? letterColor;
 
-  Color? color;
-  String? content;
-  String? numEng;
-  String? num;
+  ///Metinsel içerik yazısı
   String? text;
+  ///Başlık
   String? tittle;
+  /// icon widget şeklinde oluşturulmuştur.
+  /// Icon(Icons.icon) şeklinde girilmelidir
   Widget? icon;
+  ///İconun bulunduğu kutunun rengi
   Color? boxColor;
+  /// Yazo rengi
   Color? textColor;
+  ///Başlık rengi
   Color? tittleColor;
 
   ExpendLetterWidget(
-      {this.color,
-      this.content,
-      this.numEng,
-      this.num,
+      {this.letterColor,
+
       this.tittle,
       this.text,
-      this.icon,
+     this.icon,
       this.boxColor,
       this.textColor,
       this.tittleColor});
@@ -33,10 +35,10 @@ class _ExpendLetterWidgetState extends State<ExpendLetterWidget> {
   @override
   Widget build(BuildContext context) {
     return AnimCard(
-      color: widget.color ?? const Color(0xffFF6594),
-      content: widget.content ?? '',
-      numEng: widget.numEng ?? '',
-      num: widget.num ?? '',
+      color: widget.letterColor ?? const Color(0xffFF6594),
+      content:  '',
+      numEng:  '',
+      num:  '',
       text: widget.text,
       tittle: widget.tittle,
       icon: widget.icon,
@@ -93,9 +95,9 @@ class _AnimCardState extends State<AnimCard> {
             child: Container(
               child: CardItem(
                 color: widget.color,
-                num: widget.num,
-                numEng: widget.numEng,
-                content: widget.content,
+                num: "",
+                numEng: "",
+                content: "",
                 text: widget.text,
                 tittle: widget.tittle,
                 textColor: widget.textColor,
@@ -112,7 +114,7 @@ class _AnimCardState extends State<AnimCard> {
           Align(
             alignment: Alignment.centerRight,
             child: Container(
-              margin: EdgeInsets.only(right: 20, left: 20, top: 200),
+              margin: const EdgeInsets.only(right: 20, left: 20, top: 200),
               height: 180,
               decoration: BoxDecoration(
                 boxShadow: [
@@ -146,7 +148,7 @@ class CardItem extends StatelessWidget {
   final Color? textColor;
   final Color? tittleColor;
 
-  CardItem({
+  const CardItem({
     required this.color,
     required this.num,
     required this.numEng,
@@ -184,13 +186,13 @@ class CardItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                tittle ?? "",
+                tittle ?? "Başlık",
                 style: TextStyle(
                     color: tittleColor ?? Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.w600),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Text(

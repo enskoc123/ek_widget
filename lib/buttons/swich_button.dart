@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -37,18 +36,18 @@ class _OnOffButtonState extends State<OnOffButton>
         );
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.fastLinearToSlowEaseIn,
         height: isTapped ? 64 : 67,
         width: isTapped ? 190 : 200,
         decoration: BoxDecoration(
-          color: isTapped ?widget.colorForOff ?? Color(0xffB23F3F) :widget.colorForOn ?? Color(0xffFF4E4E),
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+          color: isTapped ?widget.colorForOff ?? const Color(0xffB23F3F) :widget.colorForOn ?? const Color(0xffFF4E4E),
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(isTapped ? 0 : 0.3),
               blurRadius: isTapped ? 0 : 10,
-              offset: Offset(0, 7),
+              offset: const Offset(0, 7),
             ),
           ],
         ),

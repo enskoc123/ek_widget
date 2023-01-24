@@ -9,18 +9,18 @@ class _LoginBasic1State extends State<LoginBasic1> {
   @override
   Widget build(BuildContext context) {
     final emailField = TextField(
-      style: TextStyle(fontSize: 20.0),
+      style: const TextStyle(fontSize: 20.0),
       decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Email",
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
     final passwordField = TextField(
       obscureText: true,
-      style: TextStyle(fontSize: 20.0),
+      style: const TextStyle(fontSize: 20.0),
       decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Password",
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
@@ -28,12 +28,12 @@ class _LoginBasic1State extends State<LoginBasic1> {
     final loginButton = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
-      color: Color(0xff01A0C7),
+      color: const Color(0xff01A0C7),
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+        padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {},
-        child: Text("Login",
+        child: const Text("Login",
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 20.0,
@@ -43,7 +43,7 @@ class _LoginBasic1State extends State<LoginBasic1> {
     );
     return SingleChildScrollView(
       child: Center(
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.of(context).size.height / 1.5,
           child: Padding(
             padding: const EdgeInsets.all(36.0),
@@ -58,15 +58,15 @@ class _LoginBasic1State extends State<LoginBasic1> {
                     fit: BoxFit.contain,
                   ),
                 ),
-                SizedBox(height: 48.0),
+                const SizedBox(height: 48.0),
                 emailField,
-                SizedBox(height: 24.0),
+                const SizedBox(height: 24.0),
                 passwordField,
-                SizedBox(
+                const SizedBox(
                   height: 36.0,
                 ),
                 loginButton,
-                SizedBox(
+                const SizedBox(
                   height: 16.0,
                 ),
               ],

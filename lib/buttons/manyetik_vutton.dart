@@ -1,12 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
-
+///Yatay düzelemde belli bir merkeze dağru  çekim kuvveti gösteren
+///bir button. sağa veya sola doğru sürüklenebilir , fakat bırakıldığında
+///button kendi yerine geri döner
 class ManyeticButton extends StatefulWidget {
   @override
   _ManyeticButtonState createState() => _ManyeticButtonState();
+ /// butonun container background rengini belirtir
   Color? color;
+  ///botton içerisindeki text i belirtir
   String? inText;
+  ///buton içerisindeki textin rengini belirtir
   Color? textColor;
 
   ManyeticButton({this.color, this.inText,this.textColor});
@@ -17,18 +21,18 @@ class _ManyeticButtonState extends State<ManyeticButton> {
   Widget build(BuildContext context) {
     return DraggableCard(
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.fastLinearToSlowEaseIn,
         height: 150,
         width: 150,
         decoration: BoxDecoration(
-          color:widget.color ?? Color(0xff8639FB),
-          borderRadius: BorderRadius.all(
+          color:widget.color ?? const Color(0xff8639FB),
+          borderRadius: const BorderRadius.all(
             Radius.circular(10),
           ),
           boxShadow: [
             BoxShadow(
-              color:widget.color ?? Color(0xff8639FB).withOpacity(0.7),
+              color:widget.color ?? const Color(0xff8639FB).withOpacity(0.7),
               blurRadius: 30,
             ),
           ],
@@ -51,7 +55,7 @@ class _ManyeticButtonState extends State<ManyeticButton> {
 class DraggableCard extends StatefulWidget {
   final Widget child;
 
-  DraggableCard({required this.child});
+  const DraggableCard({required this.child});
 
   @override
   _DraggableCardState createState() => _DraggableCardState();

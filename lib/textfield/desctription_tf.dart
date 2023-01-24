@@ -1,21 +1,34 @@
 import 'package:flutter/material.dart';
-
+/// Açıklama metinleri , not ve benzeri geniş alanlarda yazı yazabilme imkanı sağlayan kapsamlı bir textfield
 class DescriptionTextField extends StatelessWidget {
+  /// textfieldın arka plan rengi
   Color? boxColor;
+  /// yazılan textin rengi
   Color? textColor;
+  /// hinttext rengi
   Color? hintTextColor;
+/// son ek yazısının rengi
   Color? suffixTextColor;
+  ///label yazısının rengi
   Color? labelTextColor;
+  ///icon rengi
   Color? iconColor;
+  ///ön ek text rengi
   Color? prefixTextColor;
-  Color? focusedBorderColor; // dış çemberin focused rengi
-  Color? enabledBorderColor;//Textfield ın dış çemberinin rengi
-  double? enabledBorderRadius; //textfield a tıklanadan önce dış çemberin köşe ovallik oranı
-  double? focusedBorderRadius;//textfield a tıklanıp focuslandıktan sonra dış çemberin köşe ovallik oranı
-
+  /// dış çemberin focused rengi
+  Color? focusedBorderColor;
+  ///Textfield ın dış çemberinin rengi
+  Color? enabledBorderColor;
+  ///textfield a tıklanadan önce dış çemberin köşe ovallik oranı
+  double? enabledBorderRadius;
+  ///textfield a tıklanıp focuslandıktan sonra dış çemberin köşe ovallik oranı
+  double? focusedBorderRadius;
+  /// hinttext yazisi
   String? hintText;
   String? labelText;
+  /// textfield in başında solda bulunan text
   String? prefixText;
+  ///Textfiel ın sağında kalan text
   String? suffixText;
 
   var controller = TextEditingController();

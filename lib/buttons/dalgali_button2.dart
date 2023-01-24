@@ -1,16 +1,19 @@
 
 import 'package:avatar_glow/avatar_glow.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+/// dalga efektli daha geniş bir çapa sahip olan buton
 class DalgaliAvatarGlow extends StatefulWidget {
   @override
   _DalgaliAvatarGlowState createState() => _DalgaliAvatarGlowState();
-
+ /// buttonun sahip olduğu dairesel kutucuğun rengi
   Color? circleBoxColor;
+  /// buttonun etrafa yaydığı dalga efektinin rengi
   Color? circleWaveColor;
+  ///buton içerisinde bulunan iconun rengi
   Color? iconColor;
+  /// butonun içerisindeki icon'un değişkeni
   Widget? icon;
+  /// buttona ait on pressed methodu
   var onPressed;
 
   DalgaliAvatarGlow(
@@ -23,7 +26,7 @@ class _DalgaliAvatarGlowState extends State<DalgaliAvatarGlow> {
     return AvatarGlow(
       glowColor:widget.circleWaveColor ?? Colors.white,
       endRadius: 120,
-      duration: Duration(milliseconds: 2000),
+      duration: const Duration(milliseconds: 2000),
       repeat: true,
       showTwoGlows: true,
       curve: Curves.easeOutQuad,

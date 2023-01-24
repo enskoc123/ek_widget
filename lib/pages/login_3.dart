@@ -3,7 +3,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage3 extends StatefulWidget {
 
@@ -94,7 +93,7 @@ class _LoginPage3State extends State<LoginPage3>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 3),
+      duration: const Duration(seconds: 3),
     );
 
     _opacity = Tween<double>(begin: 0, end: 1).animate(
@@ -129,15 +128,14 @@ class _LoginPage3State extends State<LoginPage3>
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        brightness: Brightness.dark,
         backgroundColor:Colors.transparent,
         elevation: 0,
         leading: IconButton(
           onPressed: (){
            Navigator.pop(context);
           },
-          icon:widget.appBarBackButtonIcon ??  Icon(Icons.arrow_back_ios),
-        ),
+          icon:widget.appBarBackButtonIcon ??  const Icon(Icons.arrow_back_ios),
+        ), systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       body: ScrollConfiguration(
         behavior: MyBehaviorfd(),
@@ -151,8 +149,8 @@ class _LoginPage3State extends State<LoginPage3>
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                   widget.pageBackGroundColor1 ?? Color(0xffFEC37B),
-                   widget.pageBackGroundColor2 ?? Color(0xffFF4184),
+                   widget.pageBackGroundColor1 ?? const Color(0xffFEC37B),
+                   widget.pageBackGroundColor2 ?? const Color(0xffFF4184),
                   ],
                 ),
               ),
@@ -176,7 +174,7 @@ class _LoginPage3State extends State<LoginPage3>
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        SizedBox(),
+                        const SizedBox(),
                         Text(widget.tittleText ??
                           'Sign In',
                           style: TextStyle(
@@ -185,7 +183,7 @@ class _LoginPage3State extends State<LoginPage3>
                             color:widget.tittleTextColor ?? Colors.black.withOpacity(.7),
                           ),
                         ),
-                        SizedBox(),
+                        const SizedBox(),
                         component1(icon: widget.userIcon ?? Icons.account_circle_outlined,
                          hintText:  widget.hintTextUserName ?? 'User name...',
                             isPassword:  false,isEmail:  false,controller: widget.userNameController),
@@ -217,7 +215,7 @@ class _LoginPage3State extends State<LoginPage3>
                             ),
                           ],
                         ),
-                        SizedBox(),
+                        const SizedBox(),
                         Container(
                           width: size.width / 2.6,
                           alignment: Alignment.center,
@@ -235,7 +233,7 @@ class _LoginPage3State extends State<LoginPage3>
                             ),
                           ),
                         ),
-                        SizedBox(),
+                        const SizedBox(),
                       ],
                     ),
                   ),
@@ -291,7 +289,7 @@ class _LoginPage3State extends State<LoginPage3>
         width: size.width / width,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color:widget.buttonsColor ?? Color(0xff4796ff),
+          color:widget.buttonsColor ?? const Color(0xff4796ff),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Text(

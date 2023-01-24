@@ -2,6 +2,7 @@ name: ek_widget
 description: Bu paket Enes KOC un ulusturdugu widgetleri kapsar "This packet is inculude make widgets of Enes KOÇ
 version: 0.0.1
 
+# dart fix --apply  (const ekleyen terminal kodu)
 
 environment:
   sdk: '>=2.18.4 <3.0.0'
@@ -14,6 +15,7 @@ dependencies:
     sdk: flutter
   flutter_signin_button: ^2.0.0
   fluttertoast: ^8.1.1
+  google_fonts: ^3.0.1
   image_network: ^2.5.1
   progress_state_button: ^1.0.4
 
@@ -25,6 +27,8 @@ dev_dependencies:
 
 
 flutter:
+
+
 
 
 

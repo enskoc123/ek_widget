@@ -80,7 +80,7 @@ class _Register3State extends State<Register3> with TickerProviderStateMixin {
 
     controller1 = AnimationController(
       vsync: this,
-      duration: Duration(
+      duration: const Duration(
         seconds: 5,
       ),
     );
@@ -111,7 +111,7 @@ class _Register3State extends State<Register3> with TickerProviderStateMixin {
 
     controller2 = AnimationController(
       vsync: this,
-      duration: Duration(
+      duration: const Duration(
         seconds: 5,
       ),
     );
@@ -138,7 +138,7 @@ class _Register3State extends State<Register3> with TickerProviderStateMixin {
       setState(() {});
     });
 
-    Timer(Duration(milliseconds: 2500), () {
+    Timer(const Duration(milliseconds: 2500), () {
       controller1.forward();
     });
 
@@ -156,7 +156,7 @@ class _Register3State extends State<Register3> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: widget.backGroundColor ?? Color(0xff192028),
+      backgroundColor: widget.backGroundColor ?? const Color(0xff192028),
       body: ScrollConfiguration(
         behavior: MyBehaviorReg3(),
         child: SingleChildScrollView(
@@ -356,11 +356,11 @@ class MyPainterReg3 extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
       ..shader = LinearGradient(colors: [
-        color1 ?? Color(0xffFD5E3D),
-        color2 ?? Color(0xffC43990)
+        color1 ?? const Color(0xffFD5E3D),
+        color2 ?? const Color(0xffC43990)
       ], begin: Alignment.topLeft, end: Alignment.bottomRight)
           .createShader(Rect.fromCircle(
-        center: Offset(0, 0),
+        center: const Offset(0, 0),
         radius: radius,
       ));
 

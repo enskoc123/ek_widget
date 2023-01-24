@@ -8,34 +8,53 @@ class LoginPage1 extends StatefulWidget {
   @override
   _LoginPage1State createState() => _LoginPage1State();
 
-  //Tittle variables
+  ///Tittle variables başlık değişkeni
   String? tittleText;
+
+  ///başlık rengi
   Color? tittleTextColor;
 
-  // Textfield variables
+  /// kullanıcı adı içi inttext
   String? hintTextUserName;
+
+  /// şifre için hinttext
   String? hintTextPassword;
+
+  /// yazılan text in rengi
   Color? textFieldTextColor;
+
+  /// hinttext rengi
   Color? textFieldHintTextColor;
 
   // Button variables
+  /// giriş yap butonunun yazısı
   String? loginButtonText;
+
+  /// şifremi unuttum butonunun yazısı
   String? forgettenPassButtonText;
+
+  /// butonlar üzerindeki yazıların renkleri
   Color? buttonsTextColor;
+
+  ///tüm butonların renklerini barındırın
   Color? buttonsColor;
 
+  ///yeni kullanıcı butonundaki text
   String? newAccountButtonText;
 
-
   // Icons
+  ///iconlara ait renk
   Color? iconColor;
+
+  /// kullanıcı adı tf sine ait icon
   IconData? userIcon;
+
+  ///şifre tf sine ait icon
   IconData? passIcon;
 
   //background
   Color? backGroundColor;
   String? backGroundImageLink;
-
 
   //Fonksyonlar
   var loginButonOnTab;
@@ -51,7 +70,6 @@ class LoginPage1 extends StatefulWidget {
 
   TextEditingController userNameController;
   TextEditingController userPassController;
-
 
   LoginPage1(
       {this.tittleText,
@@ -74,11 +92,10 @@ class LoginPage1 extends StatefulWidget {
       this.forgetPassButtonOnTab,
       this.userIcon,
       this.passIcon,
-      this.logoImageLink
-      ,this.backGroundImageLink,
+      this.logoImageLink,
+      this.backGroundImageLink,
       required this.userPassController,
-        required this.userNameController
-      });
+      required this.userNameController});
 }
 
 class _LoginPage1State extends State<LoginPage1> with TickerProviderStateMixin {
@@ -95,7 +112,7 @@ class _LoginPage1State extends State<LoginPage1> with TickerProviderStateMixin {
 
     controller1 = AnimationController(
       vsync: this,
-      duration: Duration(
+      duration: const Duration(
         seconds: 5,
       ),
     );
@@ -126,7 +143,7 @@ class _LoginPage1State extends State<LoginPage1> with TickerProviderStateMixin {
 
     controller2 = AnimationController(
       vsync: this,
-      duration: Duration(
+      duration: const Duration(
         seconds: 5,
       ),
     );
@@ -153,7 +170,7 @@ class _LoginPage1State extends State<LoginPage1> with TickerProviderStateMixin {
         setState(() {});
       });
 
-    Timer(Duration(milliseconds: 2500), () {
+    Timer(const Duration(milliseconds: 2500), () {
       controller1.forward();
     });
 
@@ -171,7 +188,7 @@ class _LoginPage1State extends State<LoginPage1> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: widget.backGroundColor ?? Color(0xff192028),
+      backgroundColor: widget.backGroundColor ?? const Color(0xff192028),
       body: ScrollConfiguration(
         behavior: MyBehaviorL(),
         child: SingleChildScrollView(
@@ -184,7 +201,7 @@ class _LoginPage1State extends State<LoginPage1> with TickerProviderStateMixin {
                     widget.backGroundImageLink ??
                         "http://mzkarakas.com/wp-content/uploads/2020/06/flutterlogo.jpg",
                     height: size.height,
-                    width: size.width ,
+                    width: size.width,
                     fit: BoxFit.fitHeight,
                   ),
                 Positioned(
@@ -273,18 +290,20 @@ class _LoginPage1State extends State<LoginPage1> with TickerProviderStateMixin {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           component1(
-                             icon:  widget.userIcon ?? Icons.account_circle_outlined,
-                             hintText:  widget.hintTextUserName ?? 'User name...',
-                             isEmail:  false,
-                            isPassword:   false,
-                          controller: widget.userNameController),
+                              icon: widget.userIcon ??
+                                  Icons.account_circle_outlined,
+                              hintText:
+                                  widget.hintTextUserName ?? 'User name...',
+                              isEmail: false,
+                              isPassword: false,
+                              controller: widget.userNameController),
                           component1(
                               icon: widget.passIcon ?? Icons.lock_outline,
-                              hintText: widget.hintTextPassword ?? 'Password...',
+                              hintText:
+                                  widget.hintTextPassword ?? 'Password...',
                               isPassword: true,
                               isEmail: false,
-                          controller: widget.userPassController
-                          ),
+                              controller: widget.userPassController),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -340,12 +359,11 @@ class _LoginPage1State extends State<LoginPage1> with TickerProviderStateMixin {
   }
 
   Widget component1(
-      {
-       required IconData icon,
-     required String hintText,
-     required bool isPassword,
-     required bool isEmail,
-     required controller}) {
+      {required IconData icon,
+      required String hintText,
+      required bool isPassword,
+      required bool isEmail,
+      required controller}) {
     Size size = MediaQuery.of(context).size;
     return ClipRRect(
       borderRadius: BorderRadius.circular(15),
@@ -382,7 +400,8 @@ class _LoginPage1State extends State<LoginPage1> with TickerProviderStateMixin {
               hintText: hintText,
               hintStyle: TextStyle(
                   fontSize: 14,
-                  color: widget.textFieldHintTextColor ?? Colors.white.withOpacity(.5)),
+                  color: widget.textFieldHintTextColor ??
+                      Colors.white.withOpacity(.5)),
             ),
           ),
         ),
@@ -433,11 +452,11 @@ class MyPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
       ..shader = LinearGradient(colors: [
-        color1 ?? Color(0xffFD5E3D),
-        color2 ?? Color(0xffC43990)
+        color1 ?? const Color(0xffFD5E3D),
+        color2 ?? const Color(0xffC43990)
       ], begin: Alignment.topLeft, end: Alignment.bottomRight)
           .createShader(Rect.fromCircle(
-        center: Offset(0, 0),
+        center: const Offset(0, 0),
         radius: radius,
       ));
 
