@@ -53,9 +53,9 @@ class PhoneNumberTextField extends StatelessWidget {
           focusColor: Colors.orange,
           hoverColor: Colors.black,
 
-
+          suffixIcon: Icon(icon ?? Icons.phone,color:iconColor ?? Colors.black),
           filled: true,
-          icon: Icon(icon ?? null,color:iconColor ?? Colors.black),
+          //icon: Icon(icon ?? Icons.phone,color:iconColor ?? Colors.black),
           hintText:hintText ?? "Telefon Numarası",
           labelText:labelText ??"tel no",
           prefixText: prefixText ??'+90 ',
