@@ -18,7 +18,7 @@ class PhoneNumberTextField extends StatelessWidget {
   String? prefixText;
 
   var controller = TextEditingController();
-  IconData? icon;
+  IconData? SuffixIcon;
   int? maxLength;
 
 
@@ -53,7 +53,7 @@ class PhoneNumberTextField extends StatelessWidget {
           focusColor: Colors.orange,
           hoverColor: Colors.black,
 
-          suffixIcon: Icon(icon ?? Icons.phone,color:iconColor ?? Colors.black),
+          suffixIcon: Icon(SuffixIcon ?? Icons.phone,color:iconColor ?? Colors.black),
           filled: true,
           //icon: Icon(icon ?? Icons.phone,color:iconColor ?? Colors.black),
           hintText:hintText ?? "Telefon Numarası",
