@@ -12,6 +12,8 @@ class TextField3 extends StatelessWidget {
   ///ön ek icon rengi
   Color? prefixIconColor;
   String? hintText;
+  String? prefixText;
+  Color? prefixTextColor;
   bool? isPassword;
   bool? isEmail;
   var controller = TextEditingController();
@@ -32,7 +34,9 @@ class TextField3 extends StatelessWidget {
       required this.controller,
       this.prefixIcon,
       this.suffixIcon,
-      this.suffixIconOnTab});
+      this.suffixIconOnTab,
+      this.prefixText,
+      this.prefixTextColor});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +57,9 @@ class TextField3 extends StatelessWidget {
         keyboardType:
             isEmail! ? TextInputType.emailAddress : TextInputType.text,
         decoration: InputDecoration(
-
+          prefixText: prefixText,
+          prefixStyle: TextStyle(
+              color: prefixTextColor ?? Colors.black),
           prefixIcon: Icon(
             prefixIcon,
             color: prefixIconColor ?? Colors.black.withOpacity(.7),
