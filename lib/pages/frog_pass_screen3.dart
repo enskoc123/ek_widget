@@ -3,12 +3,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-export 'package:ek_widget/pages/frog_pass_screen3.dart';
 
-class LoginPage3 extends StatefulWidget {
+class FrogPassPage3 extends StatefulWidget {
 
   @override
-  _LoginPage3State createState() => _LoginPage3State();
+  _FrogPassPage3State createState() => _FrogPassPage3State();
 
   //Tittle variables
   String? tittleText;
@@ -20,7 +19,7 @@ class LoginPage3 extends StatefulWidget {
   Color? textFieldTextColor;
   Color? textFieldHintTextColor;
 
-    // Button variables
+  // Button variables
   String? loginButtonText;
   String? forgettenPassButtonText;
   String? newAccountButtonText;
@@ -46,12 +45,11 @@ class LoginPage3 extends StatefulWidget {
   var appBarBackButtonOnTab;
 
   var loginButonOnTab;
-  var forgetPassButtonOnTab;
+  dynamic forgetPassButtonOnTab;
   var createAnewAccountButtonOnTab;
 
   //CONTROLLER
   TextEditingController userNameController;
-  TextEditingController userPassController;
 
   /// App Bar açık kapalı varsayılanı kapalı
   bool isAppBar = false;
@@ -60,7 +58,7 @@ class LoginPage3 extends StatefulWidget {
   bool isCreateAnewAccountButton = false;
 
   /// Şifremi unuttum butonu açık kapalı varsayılanı kapalı
-  bool isForgettenPassButton = false;
+  bool isLoginButton = false;
 
 
   /// web görünümüne geçevegi genişlik seviyesi varsayılanı 830
@@ -69,40 +67,39 @@ class LoginPage3 extends StatefulWidget {
   /// web görünümüne geçevegi genişlik seviyesi2 varsayılanı 830
   double webSize2 = 1400;
 
-  LoginPage3(
+  FrogPassPage3(
       {this.tittleText,
-      this.hintTextUserName,
-      this.hintTextPassword,
-      this.loginButtonText,
-      this.forgettenPassButtonText,
-      this.newAccountButtonText,
-      this.tittleTextColor,
-      this.textFieldTextColor,
-      this.textFieldHintTextColor,
-      this.iconColor,
-      this.buttonsTextColor,
-      this.buttonsColor,
-      this.backGroundContainerColor,
-      this.pageBackGroundColorList,
+        this.hintTextUserName,
+        this.hintTextPassword,
+        this.loginButtonText,
+        this.forgettenPassButtonText,
+        this.newAccountButtonText,
+        this.tittleTextColor,
+        this.textFieldTextColor,
+        this.textFieldHintTextColor,
+        this.iconColor,
+        this.buttonsTextColor,
+        this.buttonsColor,
+        this.backGroundContainerColor,
+        this.pageBackGroundColorList,
         this.newAccountTextColor,
-      this.isCreateAnewAccountButton = false,
-      this.isForgettenPassButton = false,
+        this.isCreateAnewAccountButton = false,
+        this.isLoginButton = false,
         this.isAppBar = false,
         this.webSize = 830,
         this.webSize2 = 1400,
-      this.userIcon,
-      this.passIcon,
+        this.userIcon,
+        this.passIcon,
         this.appBarBackButtonIcon,
         this.appBarBackButtonOnTab,
         this.createAnewAccountButtonOnTab,
         this.forgetPassButtonOnTab,
         this.loginButonOnTab,
-       required this.userNameController,
-        required this.userPassController
+        required this.userNameController,
       });
 }
 
-class _LoginPage3State extends State<LoginPage3>
+class _FrogPassPage3State extends State<FrogPassPage3>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _opacity;
@@ -154,7 +151,7 @@ class _LoginPage3State extends State<LoginPage3>
         elevation: 0,
         leading: IconButton(
           onPressed: (){
-           Navigator.pop(context);
+            Navigator.pop(context);
           },
           icon:widget.appBarBackButtonIcon ??  const Icon(Icons.arrow_back_ios),
         ), systemOverlayStyle: SystemUiOverlayStyle.light,
@@ -173,7 +170,7 @@ class _LoginPage3State extends State<LoginPage3>
                   colors:widget.pageBackGroundColorList?? [
                     const Color(0xffFEC37B),
                     const Color(0xffFF4184),
-                   const Color(0xffFFffff),
+                    const Color(0xffFFffff),
                   ],
                 ),
               ),
@@ -199,7 +196,7 @@ class _LoginPage3State extends State<LoginPage3>
                       children: [
                         const SizedBox(),
                         Text(widget.tittleText ??
-                          'Sign In',
+                            'Şifremi unuttum',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w600,
@@ -208,58 +205,55 @@ class _LoginPage3State extends State<LoginPage3>
                         ),
                         const SizedBox(),
                         component1(icon: widget.userIcon ?? Icons.account_circle_outlined,
-                         hintText:  widget.hintTextUserName ?? 'User name...',
+                            hintText:  widget.hintTextUserName ?? 'User name...',
                             isPassword:  false,isEmail:  false,controller: widget.userNameController),
-                        component1(
-                         icon: widget.passIcon ??  Icons.lock_outline,
-                            hintText: widget.hintTextPassword ?? 'Password...',
-                            isPassword:  true,isEmail:  false,controller: widget.userPassController),
+
                         component2(
-                           widget.loginButtonText ??   'LOGIN',
+                          widget.loginButtonText ??   'Send',
                           2.6,
                               () {
                             HapticFeedback.lightImpact();
-                            widget.loginButonOnTab();
+                            widget.forgetPassButtonOnTab();
 
                           },
                         ),
                         const SizedBox(),
-                        if(widget.isForgettenPassButton)
-                        Container(
-                          width: size.width / 2.6,
-                          alignment: Alignment.center,
-                          child: RichText(
-                            text: TextSpan(
-                              text:widget.forgettenPassButtonText ??   'Forgetten Password',
-                              style: TextStyle(
-                                color:widget.newAccountTextColor ?? Colors.blueAccent,
-                                fontSize: 15,
+                        if(widget.isLoginButton)
+                          Container(
+                            width: size.width / 2.6,
+                            alignment: Alignment.center,
+                            child: RichText(
+                              text: TextSpan(
+                                text:widget.loginButtonText ??   'Login',
+                                style: TextStyle(
+                                  color:widget.newAccountTextColor ?? Colors.blueAccent,
+                                  fontSize: 15,
+                                ),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    widget.loginButonOnTab();
+                                  },
                               ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  widget.forgetPassButtonOnTab();
-                                },
                             ),
                           ),
-                        ),
                         if(widget.isCreateAnewAccountButton)
-                        Container(
-                          width: size.width / 2.6,
-                          alignment: Alignment.center,
-                          child: RichText(
-                            text: TextSpan(
-                              text:widget.newAccountButtonText ?? 'Create a new Account',
-                              style: TextStyle(
-                                color:widget.newAccountTextColor ?? Colors.blueAccent,
-                                fontSize: 15,
+                          Container(
+                            width: size.width / 2.6,
+                            alignment: Alignment.center,
+                            child: RichText(
+                              text: TextSpan(
+                                text:widget.newAccountButtonText ?? 'Create a new Account',
+                                style: TextStyle(
+                                  color:widget.newAccountTextColor ?? Colors.blueAccent,
+                                  fontSize: 15,
+                                ),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    widget.createAnewAccountButtonOnTab();
+                                  },
                               ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                widget.createAnewAccountButtonOnTab();
-                                },
                             ),
                           ),
-                        ),
                         const SizedBox(),
                       ],
                     ),
